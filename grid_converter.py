@@ -143,11 +143,11 @@ print('Writing the new file')
 totalBounded = 0
 for i in xrange(nRows):
 	#print('Line ' + str(i+1) + ' of ' + str(nRows))
-	lat = yllCorner + (nRows - i) * cellSize
+	lat = yllCorner + (nRows - i) * cellSize + cellSize/2 # cellSize/2 to have values centered instead of top-left
 	for j in xrange(nCols):
 		if grid[i][j] == 0:
 			continue
-		lon = xllCorner + j * cellSize
+		lon = xllCorner + j * cellSize + cellSize/2 # cellSize/2 to have values centered instead of top-left
 		point = Point(lon, lat)
 		if point.within(poly):		
 			totalBounded = totalBounded + grid[i][j]

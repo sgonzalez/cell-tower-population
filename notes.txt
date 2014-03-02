@@ -1,0 +1,4 @@
+NOTES
+
+CIV10adjv3.asc – Contains gridded population estimates
+IvoryCoast.csv – Contains the geometry of Ivory Coast as a bunch of points

@@ -37,3 +37,8 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+
+CIV10adjv3.asc
+
+OUT.csv
