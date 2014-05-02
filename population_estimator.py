@@ -11,15 +11,12 @@ from shapely.geometry import Polygon, Point
 from math import modf
 
 def help():
-  print('Usage: ' + sys.argv[0] + ' polygon_file geometry_file output_file')
+  print('Usage: ' + sys.argv[0] + ' polygon_file geometry_file grid_population_file output_file')
 
 # ------------------------------------------------------------------------------- #
 # Some definitions                                                                #
 # ------------------------------------------------------------------------------- #
-FEEDBACK_NUM_RECORDS = 100
-NUM_ARGS             = 4
-TOLERANCE            = 0.00001
-ARCGIS_NO_DATA_VALUE = -3.40282346639e+038
+NUM_ARGS             = 5
 
 # ------------------------------------------------------------------------------- #
 # Script begins                                                                   #
@@ -38,7 +35,7 @@ if len(sys.argv) != NUM_ARGS:
 # ------------------------------------------------------------------------------- #
 # Opening of files                                                                #
 # ------------------------------------------------------------------------------- #
-print('Trying to open the input and geometry files for reading')
+print('Trying to open the polygon and geometry files for reading')
 try:
   input = open(sys.argv[1], 'rt')
 except:
@@ -51,12 +48,18 @@ except:
   input.close()
   exit(3)
 try:
-  output = open(sys.argv[3], 'wt')
+  populations = open(sys.argv[3], 'rt')
+except:
+  print('Could not open file ' + sys.argv[3])
+  input.close()
+  exit(4)
+try:
+  output = open(sys.argv[4], 'wt')
 except:
   print('Could not open file ' + sys.argv[3])
   input.close()
   geometry.close()
-  exit(4)
+  exit(5)
 print('Success!')
 
 # ------------------------------------------------------------------------------- #
@@ -65,7 +68,7 @@ print('Success!')
 print('Reading geometry file')
 geoData = []
 for line in geometry:
-  line = line.replace('\n', '')
+  line = line.strip()
   data = line.split(' ')
   for i in range(0, len(data)):
     d = data[i].split(',')
@@ -81,6 +84,37 @@ print('Creating a polygon based on geometry')
 poly = Polygon(geoData)
 print('That was easy!')
 
+# ------------------------------------------------------------------------------- #
+# Load populations into array                                                     #
+# ------------------------------------------------------------------------------- #
+print('Reading gridded populations')
+populationData = {}
+for line in populations:
+  line = line.strip()
+  data = line.split(',')
+  populationData[(float(data[0]), float(data[1]))] = float(data[2])
+populations.close();
+print('Finished loading gridded populations')
+
+# ------------------------------------------------------------------------------- #
+# Load polygons into array                                                        #
+# ------------------------------------------------------------------------------- #
+print('Reading polygons')
+voronoiPolygons = {}
+for line in input:
+  line = line.strip()
+  data = line.split(',')
+  voronoiPolygons.setdefault(int(data[0]),[]).append([float(data[1]), float(data[2])])
+for k in voronoiPolygons:
+  poly = Polygon(voronoiPolygons[k])
+  voronoiPolygons[k] = poly
+print('Finished reading polygons')
+
+# ------------------------------------------------------------------------------- #
+# Estimate populations                                                            #
+# ------------------------------------------------------------------------------- #
+
+'''
 # ------------------------------------------------------------------------------- #
 # Reading metadata                                                                #
 # ------------------------------------------------------------------------------- #
@@ -154,6 +188,7 @@ for i in xrange(nRows):
       output.write(str.format('{0:.5f}', lon) + ',' + str.format('{0:.5f}', lat) + ',' + str.format('{0:.2f}', grid[i][j]) + '\n')
 output.close()
 print('Total bounded: ' + str(totalBounded))
+'''
 
 # ------------------------------------------------------------------------------- #
 # Script ends                                                                     #
