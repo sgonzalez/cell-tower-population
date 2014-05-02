@@ -8,14 +8,14 @@
     <meta name="Author" content="Thyago Mota"/>
 </head>
 
-<script src="http://maps.google.com/maps/api/js?sensor=false"></script>	
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript" src="OpenLayers.js"></script>
 <script type="text/javascript" src="javascript.util.js"></script>
 <script type="text/javascript" src="jsts.js"></script>
 <script type="text/javascript" src="attache.array.min.js"></script>
 <script type="text/javascript">
 	var map, baseLayer, sitesLayer, tilesLayer;
-	
+
 	function init() {
 		// 0. the parser object converts objects from JSTS to OpenLayers
 		var parser = new jsts.io.OpenLayersParser();
@@ -23,12 +23,398 @@
 		// 1. these objects will be necessary to convert from one projection to another
 		var epsg4326   = new OpenLayers.Projection('EPSG:4326');
 		var epsg900913 = new OpenLayers.Projection('EPSG:900913');
-		
+
 		// 2. define the points in JSTS
 		var jstsPoints = [
 //// INSERTION POINT ////
-		
-		            new jsts.geom.Coordinate(-4.143452, 5.342044),
+
+							// Abidjan dataset
+							new jsts.geom.Coordinate(-4.14345,5.34204),
+							new jsts.geom.Coordinate(-3.96705,5.26333),
+							new jsts.geom.Coordinate(-4.07001,5.45137),
+							new jsts.geom.Coordinate(-3.98117,5.27314),
+							new jsts.geom.Coordinate(-4.01445,5.42112),
+							new jsts.geom.Coordinate(-4.02160,5.44691),
+							new jsts.geom.Coordinate(-4.00659,5.43591),
+							new jsts.geom.Coordinate(-4.01875,5.42070),
+							new jsts.geom.Coordinate(-3.99723,5.41719),
+							new jsts.geom.Coordinate(-3.99805,5.40790),
+							new jsts.geom.Coordinate(-4.11095,5.31583),
+							new jsts.geom.Coordinate(-4.02587,5.34938),
+							new jsts.geom.Coordinate(-3.88635,5.24178),
+							new jsts.geom.Coordinate(-3.93205,5.25524),
+							new jsts.geom.Coordinate(-3.93289,5.25452),
+							new jsts.geom.Coordinate(-3.93629,5.25585),
+							new jsts.geom.Coordinate(-3.93217,5.25516),
+							new jsts.geom.Coordinate(-4.03065,5.36259),
+							new jsts.geom.Coordinate(-4.02307,5.32383),
+							new jsts.geom.Coordinate(-3.95385,5.36275),
+							new jsts.geom.Coordinate(-3.96056,5.28933),
+							new jsts.geom.Coordinate(-4.01155,5.45098),
+							new jsts.geom.Coordinate(-4.03970,5.32767),
+							new jsts.geom.Coordinate(-3.94011,5.35375),
+							new jsts.geom.Coordinate(-3.96111,5.26983),
+							new jsts.geom.Coordinate(-3.85077,5.23428),
+							new jsts.geom.Coordinate(-3.96196,5.34994),
+							new jsts.geom.Coordinate(-4.06972,5.32628),
+							new jsts.geom.Coordinate(-3.95763,5.31084),
+							new jsts.geom.Coordinate(-4.08809,5.32126),
+							new jsts.geom.Coordinate(-3.96099,5.36338),
+							new jsts.geom.Coordinate(-4.06013,5.32238),
+							new jsts.geom.Coordinate(-3.97537,5.30374),
+							new jsts.geom.Coordinate(-4.02096,5.39615),
+							new jsts.geom.Coordinate(-4.09993,5.34533),
+							new jsts.geom.Coordinate(-4.00638,5.34298),
+							new jsts.geom.Coordinate(-4.06705,5.36684),
+							new jsts.geom.Coordinate(-3.98486,5.40433),
+							new jsts.geom.Coordinate(-4.01015,5.42625),
+							new jsts.geom.Coordinate(-3.98780,5.38750),
+							new jsts.geom.Coordinate(-3.96880,5.34888),
+							new jsts.geom.Coordinate(-3.97267,5.33884),
+							new jsts.geom.Coordinate(-3.96382,5.30455),
+							new jsts.geom.Coordinate(-4.00775,5.33000),
+							new jsts.geom.Coordinate(-4.00285,5.30028),
+							new jsts.geom.Coordinate(-4.01988,5.32314),
+							new jsts.geom.Coordinate(-4.08183,5.33185),
+							new jsts.geom.Coordinate(-3.97927,5.36671),
+							new jsts.geom.Coordinate(-4.08878,5.31300),
+							new jsts.geom.Coordinate(-3.98552,5.30003),
+							new jsts.geom.Coordinate(-4.01889,5.31874),
+							new jsts.geom.Coordinate(-4.05711,5.33374),
+							new jsts.geom.Coordinate(-4.11171,5.36914),
+							new jsts.geom.Coordinate(-4.07387,5.33306),
+							new jsts.geom.Coordinate(-4.02218,5.34772),
+							new jsts.geom.Coordinate(-3.96216,5.29779),
+							new jsts.geom.Coordinate(-3.95148,5.24696),
+							new jsts.geom.Coordinate(-4.09151,5.33845),
+							new jsts.geom.Coordinate(-4.00565,5.40675),
+							new jsts.geom.Coordinate(-3.99600,5.30321),
+							new jsts.geom.Coordinate(-3.98118,5.34760),
+							new jsts.geom.Coordinate(-3.96044,5.33662),
+							new jsts.geom.Coordinate(-4.02385,5.35688),
+							new jsts.geom.Coordinate(-4.01430,5.34293),
+							new jsts.geom.Coordinate(-3.98109,5.44459),
+							new jsts.geom.Coordinate(-4.00462,5.31191),
+							new jsts.geom.Coordinate(-4.02390,5.33385),
+							new jsts.geom.Coordinate(-4.03121,5.34644),
+							new jsts.geom.Coordinate(-3.97200,5.27282),
+							new jsts.geom.Coordinate(-3.99589,5.40011),
+							new jsts.geom.Coordinate(-4.02644,5.35534),
+							new jsts.geom.Coordinate(-3.99823,5.32433),
+							new jsts.geom.Coordinate(-4.00602,5.32849),
+							new jsts.geom.Coordinate(-4.05386,5.32566),
+							new jsts.geom.Coordinate(-3.98142,5.39893),
+							new jsts.geom.Coordinate(-3.95654,5.37053),
+							new jsts.geom.Coordinate(-4.10672,5.34494),
+							new jsts.geom.Coordinate(-3.96436,5.36086),
+							new jsts.geom.Coordinate(-4.01486,5.31764),
+							new jsts.geom.Coordinate(-4.02400,5.35985),
+							new jsts.geom.Coordinate(-4.01595,5.43389),
+							new jsts.geom.Coordinate(-4.16275,5.30904),
+							new jsts.geom.Coordinate(-3.98762,5.41946),
+							new jsts.geom.Coordinate(-3.93720,5.30673),
+							new jsts.geom.Coordinate(-3.98847,5.34169),
+							new jsts.geom.Coordinate(-3.98565,5.29762),
+							new jsts.geom.Coordinate(-4.02845,5.33062),
+							new jsts.geom.Coordinate(-4.01573,5.35766),
+							new jsts.geom.Coordinate(-4.00078,5.29739),
+							new jsts.geom.Coordinate(-3.98391,5.38147),
+							new jsts.geom.Coordinate(-4.00190,5.30783),
+							new jsts.geom.Coordinate(-4.02162,5.41918),
+							new jsts.geom.Coordinate(-4.09153,5.35470),
+							new jsts.geom.Coordinate(-4.08810,5.30702),
+							new jsts.geom.Coordinate(-4.07393,5.35597),
+							new jsts.geom.Coordinate(-4.00345,5.29519),
+							new jsts.geom.Coordinate(-4.01494,5.32348),
+							new jsts.geom.Coordinate(-4.02460,5.36367),
+							new jsts.geom.Coordinate(-4.01092,5.39982),
+							new jsts.geom.Coordinate(-3.93541,5.36357),
+							new jsts.geom.Coordinate(-4.03383,5.35705),
+							new jsts.geom.Coordinate(-3.92971,5.39196),
+							new jsts.geom.Coordinate(-4.11059,5.33067),
+							new jsts.geom.Coordinate(-3.96551,5.29153),
+							new jsts.geom.Coordinate(-3.99967,5.42382),
+							new jsts.geom.Coordinate(-4.00075,5.37420),
+							new jsts.geom.Coordinate(-4.01714,5.32148),
+							new jsts.geom.Coordinate(-4.00441,5.34015),
+							new jsts.geom.Coordinate(-4.01361,5.43861),
+							new jsts.geom.Coordinate(-4.01369,5.43864),
+							new jsts.geom.Coordinate(-3.96712,5.29944),
+							new jsts.geom.Coordinate(-4.00822,5.27596),
+							new jsts.geom.Coordinate(-4.06448,5.33750),
+							new jsts.geom.Coordinate(-4.08861,5.38932),
+							new jsts.geom.Coordinate(-3.95737,5.35801),
+							new jsts.geom.Coordinate(-4.01204,5.31071),
+							new jsts.geom.Coordinate(-4.04546,5.34097),
+							new jsts.geom.Coordinate(-4.04412,5.30877),
+							new jsts.geom.Coordinate(-4.01922,5.32061),
+							new jsts.geom.Coordinate(-3.98182,5.39369),
+							new jsts.geom.Coordinate(-4.02640,5.34135),
+							new jsts.geom.Coordinate(-4.01730,5.44659),
+							new jsts.geom.Coordinate(-3.97841,5.40215),
+							new jsts.geom.Coordinate(-3.99421,5.39648),
+							new jsts.geom.Coordinate(-4.02559,5.32152),
+							new jsts.geom.Coordinate(-3.90797,5.24920),
+							new jsts.geom.Coordinate(-4.02420,5.43876),
+							new jsts.geom.Coordinate(-3.97813,5.37435),
+							new jsts.geom.Coordinate(-3.99866,5.35840),
+							new jsts.geom.Coordinate(-4.01328,5.30081),
+							new jsts.geom.Coordinate(-4.02954,5.44615),
+							new jsts.geom.Coordinate(-3.94752,5.31027),
+							new jsts.geom.Coordinate(-4.02693,5.43325),
+							new jsts.geom.Coordinate(-4.01820,5.32725),
+							new jsts.geom.Coordinate(-4.07319,5.34865),
+							new jsts.geom.Coordinate(-3.95424,5.34676),
+							new jsts.geom.Coordinate(-4.00690,5.39432),
+							new jsts.geom.Coordinate(-4.02550,5.34733),
+							new jsts.geom.Coordinate(-4.00176,5.27380),
+							new jsts.geom.Coordinate(-4.03918,5.32130),
+							new jsts.geom.Coordinate(-4.02037,5.34743),
+							new jsts.geom.Coordinate(-3.99676,5.31541),
+							new jsts.geom.Coordinate(-3.97199,5.31108),
+							new jsts.geom.Coordinate(-3.94841,5.29123),
+							new jsts.geom.Coordinate(-4.02060,5.35227),
+							new jsts.geom.Coordinate(-4.03997,5.44176),
+							new jsts.geom.Coordinate(-3.93610,5.37383),
+							new jsts.geom.Coordinate(-4.09819,5.36168),
+							new jsts.geom.Coordinate(-3.98246,5.33199),
+							new jsts.geom.Coordinate(-3.97014,5.33081),
+							new jsts.geom.Coordinate(-3.91832,5.24271),
+							new jsts.geom.Coordinate(-4.06511,5.33197),
+							new jsts.geom.Coordinate(-4.01151,5.32010),
+							new jsts.geom.Coordinate(-3.95159,5.37013),
+							new jsts.geom.Coordinate(-4.09221,5.34973),
+							new jsts.geom.Coordinate(-3.96858,5.28076),
+							new jsts.geom.Coordinate(-3.97368,5.30246),
+							new jsts.geom.Coordinate(-3.97182,5.29142),
+							new jsts.geom.Coordinate(-4.08068,5.27102),
+							new jsts.geom.Coordinate(-4.02149,5.32534),
+							new jsts.geom.Coordinate(-4.02152,5.33764),
+							new jsts.geom.Coordinate(-3.98285,5.30865),
+							new jsts.geom.Coordinate(-3.99791,5.34479),
+							new jsts.geom.Coordinate(-3.97922,5.40861),
+							new jsts.geom.Coordinate(-3.99785,5.26421),
+							new jsts.geom.Coordinate(-4.00971,5.34732),
+							new jsts.geom.Coordinate(-4.00086,5.32999),
+							new jsts.geom.Coordinate(-4.09398,5.35122),
+							new jsts.geom.Coordinate(-3.90031,5.24282),
+							new jsts.geom.Coordinate(-3.99023,5.28796),
+							new jsts.geom.Coordinate(-4.04805,5.35436),
+							new jsts.geom.Coordinate(-3.96803,5.29617),
+							new jsts.geom.Coordinate(-3.97089,5.36474),
+							new jsts.geom.Coordinate(-3.92274,5.35884),
+							new jsts.geom.Coordinate(-3.96428,5.25372),
+							new jsts.geom.Coordinate(-4.10786,5.36651),
+							new jsts.geom.Coordinate(-3.98813,5.42697),
+							new jsts.geom.Coordinate(-3.99902,5.29149),
+							new jsts.geom.Coordinate(-4.09114,5.34608),
+							new jsts.geom.Coordinate(-3.95544,5.29630),
+							new jsts.geom.Coordinate(-4.06012,5.31821),
+							new jsts.geom.Coordinate(-4.02095,5.35746),
+							new jsts.geom.Coordinate(-4.11574,5.32393),
+							new jsts.geom.Coordinate(-3.99165,5.31347),
+							new jsts.geom.Coordinate(-3.97676,5.28469),
+							new jsts.geom.Coordinate(-4.01914,5.36071),
+							new jsts.geom.Coordinate(-3.97012,5.37289),
+							new jsts.geom.Coordinate(-3.97580,5.41814),
+							new jsts.geom.Coordinate(-4.09424,5.33420),
+							new jsts.geom.Coordinate(-4.03564,5.31450),
+							new jsts.geom.Coordinate(-4.09802,5.31668),
+							new jsts.geom.Coordinate(-3.99204,5.29614),
+							new jsts.geom.Coordinate(-4.00608,5.40204),
+							new jsts.geom.Coordinate(-4.07577,5.38108),
+							new jsts.geom.Coordinate(-4.01845,5.38497),
+							new jsts.geom.Coordinate(-4.05198,5.34710),
+							new jsts.geom.Coordinate(-3.98920,5.30056),
+							new jsts.geom.Coordinate(-3.97663,5.35394),
+							new jsts.geom.Coordinate(-4.06651,5.36105),
+							new jsts.geom.Coordinate(-3.97546,5.36377),
+							new jsts.geom.Coordinate(-3.95904,5.28247),
+							new jsts.geom.Coordinate(-3.95347,5.30295),
+							new jsts.geom.Coordinate(-4.09868,5.34174),
+							new jsts.geom.Coordinate(-3.97298,5.27773),
+							new jsts.geom.Coordinate(-3.98690,5.35294),
+							new jsts.geom.Coordinate(-4.08983,5.33062),
+							new jsts.geom.Coordinate(-3.98115,5.28791),
+							new jsts.geom.Coordinate(-3.99692,5.33878),
+							new jsts.geom.Coordinate(-3.94806,5.30186),
+							new jsts.geom.Coordinate(-4.01033,5.43372),
+							new jsts.geom.Coordinate(-3.97711,5.26297),
+							new jsts.geom.Coordinate(-3.99212,5.33070),
+							new jsts.geom.Coordinate(-4.00517,5.32725),
+							new jsts.geom.Coordinate(-4.00469,5.32661),
+							new jsts.geom.Coordinate(-4.02278,5.34897),
+							new jsts.geom.Coordinate(-4.01296,5.32200),
+							new jsts.geom.Coordinate(-4.01966,5.30323),
+							new jsts.geom.Coordinate(-4.01296,5.32200),
+							new jsts.geom.Coordinate(-4.01829,5.31585),
+							new jsts.geom.Coordinate(-4.02298,5.32823),
+							new jsts.geom.Coordinate(-4.01361,5.32195),
+							new jsts.geom.Coordinate(-4.02586,5.31734),
+							new jsts.geom.Coordinate(-4.01296,5.32200),
+							new jsts.geom.Coordinate(-4.02013,5.32633),
+							new jsts.geom.Coordinate(-4.02081,5.33089),
+							new jsts.geom.Coordinate(-4.01671,5.32192),
+							new jsts.geom.Coordinate(-4.01486,5.31764),
+							new jsts.geom.Coordinate(-4.08897,5.37554),
+							new jsts.geom.Coordinate(-3.97731,5.29965),
+							new jsts.geom.Coordinate(-4.05421,5.35642),
+							new jsts.geom.Coordinate(-4.02527,5.35651),
+							new jsts.geom.Coordinate(-4.01464,5.36507),
+							new jsts.geom.Coordinate(-4.01550,5.35339),
+							new jsts.geom.Coordinate(-3.90936,5.23996),
+							new jsts.geom.Coordinate(-4.02534,5.37741),
+							new jsts.geom.Coordinate(-3.98914,5.36343),
+							new jsts.geom.Coordinate(-3.98893,5.36329),
+							new jsts.geom.Coordinate(-4.03639,5.34771),
+							new jsts.geom.Coordinate(-4.05711,5.33967),
+							new jsts.geom.Coordinate(-3.99245,5.43659),
+							new jsts.geom.Coordinate(-4.06356,5.44585),
+							new jsts.geom.Coordinate(-4.05394,5.31775),
+							new jsts.geom.Coordinate(-4.09871,5.32157),
+							new jsts.geom.Coordinate(-4.09409,5.37052),
+							new jsts.geom.Coordinate(-3.99477,5.43275),
+							new jsts.geom.Coordinate(-4.00341,5.30326),
+							new jsts.geom.Coordinate(-4.01912,5.42385),
+							new jsts.geom.Coordinate(-4.01536,5.31440),
+							new jsts.geom.Coordinate(-4.09969,5.35470),
+							new jsts.geom.Coordinate(-3.96046,5.25670),
+							new jsts.geom.Coordinate(-4.05112,5.44672),
+							new jsts.geom.Coordinate(-4.04970,5.33228),
+							new jsts.geom.Coordinate(-4.01161,5.32155),
+							new jsts.geom.Coordinate(-3.99532,5.31053),
+							new jsts.geom.Coordinate(-3.97445,5.29130),
+							new jsts.geom.Coordinate(-4.11115,5.32587),
+							new jsts.geom.Coordinate(-3.96162,5.34490),
+							new jsts.geom.Coordinate(-3.96589,5.28760),
+							new jsts.geom.Coordinate(-4.01503,5.37469),
+							new jsts.geom.Coordinate(-4.00224,5.35321),
+							new jsts.geom.Coordinate(-3.95675,5.37888),
+							new jsts.geom.Coordinate(-4.00994,5.29005),
+							new jsts.geom.Coordinate(-3.98451,5.28436),
+							new jsts.geom.Coordinate(-3.99857,5.38657),
+							new jsts.geom.Coordinate(-3.98628,5.25955),
+							new jsts.geom.Coordinate(-4.06285,5.34573),
+							new jsts.geom.Coordinate(-4.01120,5.33439),
+							new jsts.geom.Coordinate(-4.05445,5.45280),
+							new jsts.geom.Coordinate(-4.01703,5.32565),
+							new jsts.geom.Coordinate(-3.99475,5.32744),
+							new jsts.geom.Coordinate(-4.00495,5.36895),
+							new jsts.geom.Coordinate(-3.98442,5.29077),
+							new jsts.geom.Coordinate(-4.06950,5.34665),
+							new jsts.geom.Coordinate(-3.98538,5.29734),
+							new jsts.geom.Coordinate(-3.98538,5.29734),
+							new jsts.geom.Coordinate(-3.99032,5.37279),
+							new jsts.geom.Coordinate(-3.97038,5.30329),
+							new jsts.geom.Coordinate(-4.02010,5.31522),
+							new jsts.geom.Coordinate(-4.02081,5.33089),
+							new jsts.geom.Coordinate(-4.00986,5.26642),
+							new jsts.geom.Coordinate(-3.97985,5.33980),
+							new jsts.geom.Coordinate(-3.97790,5.34546),
+							new jsts.geom.Coordinate(-3.96767,5.38402),
+							new jsts.geom.Coordinate(-4.02332,5.35333),
+							new jsts.geom.Coordinate(-4.01345,5.30759),
+							new jsts.geom.Coordinate(-4.07220,5.35691),
+							new jsts.geom.Coordinate(-4.00059,5.41118),
+							new jsts.geom.Coordinate(-3.98581,5.29316),
+							new jsts.geom.Coordinate(-4.00281,5.25752),
+							new jsts.geom.Coordinate(-4.01210,5.40900),
+							new jsts.geom.Coordinate(-4.04733,5.33012),
+							new jsts.geom.Coordinate(-3.99830,5.26917),
+							new jsts.geom.Coordinate(-4.02590,5.41414),
+							new jsts.geom.Coordinate(-3.97400,5.39639),
+							new jsts.geom.Coordinate(-4.07411,5.33032),
+							new jsts.geom.Coordinate(-3.97885,5.29370),
+							new jsts.geom.Coordinate(-3.97885,5.29370),
+							new jsts.geom.Coordinate(-4.00564,5.41459),
+							new jsts.geom.Coordinate(-3.99217,5.30773),
+							new jsts.geom.Coordinate(-4.04481,5.32148),
+							new jsts.geom.Coordinate(-4.06376,5.34685),
+							new jsts.geom.Coordinate(-4.01602,5.30871),
+							new jsts.geom.Coordinate(-4.03156,5.33857),
+							new jsts.geom.Coordinate(-4.00561,5.26112),
+							new jsts.geom.Coordinate(-4.06911,5.35173),
+							new jsts.geom.Coordinate(-4.08066,5.32331),
+							new jsts.geom.Coordinate(-4.02114,5.30574),
+							new jsts.geom.Coordinate(-3.98066,5.36154),
+							new jsts.geom.Coordinate(-3.97438,5.40879),
+							new jsts.geom.Coordinate(-4.07902,5.35332),
+							new jsts.geom.Coordinate(-3.94186,5.25223),
+							new jsts.geom.Coordinate(-4.02668,5.32855),
+							new jsts.geom.Coordinate(-3.99964,5.37177),
+							new jsts.geom.Coordinate(-3.99870,5.34812),
+							new jsts.geom.Coordinate(-4.01361,5.32195),
+							new jsts.geom.Coordinate(-4.02345,5.32824),
+							new jsts.geom.Coordinate(-3.95880,5.32650),
+							new jsts.geom.Coordinate(-3.97796,5.39043),
+							new jsts.geom.Coordinate(-3.99618,5.29805),
+							new jsts.geom.Coordinate(-4.09736,5.37778),
+							new jsts.geom.Coordinate(-4.06489,5.35407),
+							new jsts.geom.Coordinate(-4.07593,5.37385),
+							new jsts.geom.Coordinate(-4.01290,5.44349),
+							new jsts.geom.Coordinate(-3.98932,5.39411),
+							new jsts.geom.Coordinate(-4.07382,5.34285),
+							new jsts.geom.Coordinate(-3.97647,5.30824),
+							new jsts.geom.Coordinate(-3.91300,5.24845),
+							new jsts.geom.Coordinate(-4.08849,5.33392),
+							new jsts.geom.Coordinate(-4.00063,5.33460),
+							new jsts.geom.Coordinate(-4.03299,5.35449),
+							new jsts.geom.Coordinate(-3.94374,5.30919),
+							new jsts.geom.Coordinate(-4.04476,5.43637),
+							new jsts.geom.Coordinate(-3.95642,5.38399),
+							new jsts.geom.Coordinate(-4.01997,5.32783),
+							new jsts.geom.Coordinate(-3.99222,5.40626),
+							new jsts.geom.Coordinate(-4.02812,5.42649),
+							new jsts.geom.Coordinate(-3.99394,5.37558),
+							new jsts.geom.Coordinate(-3.96884,5.35584),
+							new jsts.geom.Coordinate(-3.99796,5.33512),
+							new jsts.geom.Coordinate(-3.99997,5.40383),
+							new jsts.geom.Coordinate(-4.05923,5.43652),
+							new jsts.geom.Coordinate(-4.02071,5.35506),
+							new jsts.geom.Coordinate(-4.10196,5.32932),
+							new jsts.geom.Coordinate(-3.99323,5.35492),
+							new jsts.geom.Coordinate(-3.96647,5.37057),
+							new jsts.geom.Coordinate(-4.07835,5.31846),
+							new jsts.geom.Coordinate(-4.07393,5.32968),
+							new jsts.geom.Coordinate(-3.94638,5.34052),
+							new jsts.geom.Coordinate(-3.94335,5.32931),
+							new jsts.geom.Coordinate(-4.00870,5.30425),
+							new jsts.geom.Coordinate(-4.05971,5.32840),
+							new jsts.geom.Coordinate(-4.00469,5.28153),
+							new jsts.geom.Coordinate(-4.07657,5.36336),
+							new jsts.geom.Coordinate(-3.97683,5.35145),
+							new jsts.geom.Coordinate(-4.01815,5.43178),
+							new jsts.geom.Coordinate(-4.00767,5.30777),
+							new jsts.geom.Coordinate(-4.01940,5.26851),
+							new jsts.geom.Coordinate(-4.07344,5.33927),
+							new jsts.geom.Coordinate(-4.01321,5.41305),
+							new jsts.geom.Coordinate(-4.06794,5.34660),
+							new jsts.geom.Coordinate(-4.02197,5.36649),
+							new jsts.geom.Coordinate(-4.10670,5.33492),
+							new jsts.geom.Coordinate(-3.96887,5.39204),
+							new jsts.geom.Coordinate(-4.08516,5.34528),
+							new jsts.geom.Coordinate(-4.00722,5.41814),
+							new jsts.geom.Coordinate(-4.07045,5.32265),
+							new jsts.geom.Coordinate(-4.07824,5.34235),
+							new jsts.geom.Coordinate(-4.08983,5.36603),
+							new jsts.geom.Coordinate(-3.94650,5.33464),
+							new jsts.geom.Coordinate(-4.08145,5.36922),
+							new jsts.geom.Coordinate(-3.99180,5.37910),
+							new jsts.geom.Coordinate(-4.00401,5.39690),
+							new jsts.geom.Coordinate(-3.96289,5.25859),
+							new jsts.geom.Coordinate(-4.06141,5.35017),
+							new jsts.geom.Coordinate(-3.91903,5.25000),
+							new jsts.geom.Coordinate(-4.08288,5.32088),
+							new jsts.geom.Coordinate(-4.05858,5.33874),
+							new jsts.geom.Coordinate(-4.01440,5.32095),
+							new jsts.geom.Coordinate(-3.98230,5.30448),
+							new jsts.geom.Coordinate(-4.00517,5.32725),
+							new jsts.geom.Coordinate(-3.98847,5.34169),
+							new jsts.geom.Coordinate(-4.08433,5.33838),
+							new jsts.geom.Coordinate(-4.08655,5.35042)
+
+							// Ivory Coast dataset
+		   /*         new jsts.geom.Coordinate(-4.143452, 5.342044),
         			new jsts.geom.Coordinate(-3.913602, 5.341612),
         			new jsts.geom.Coordinate(-3.967045, 5.263331),
         			new jsts.geom.Coordinate(-4.070007, 5.451365),
@@ -1259,28 +1645,28 @@
         			new jsts.geom.Coordinate(-4.084326, 5.338377),
         			new jsts.geom.Coordinate(-4.086550, 5.350422),
         			new jsts.geom.Coordinate(-4.603487, 6.630197)
-		    
+*/
 //// END POINT ////
-		
-			/*new jsts.geom.Coordinate(-105.210492, 39.750589), 
-			new jsts.geom.Coordinate(-105.222601, 39.751347), 
-			new jsts.geom.Coordinate(-105.153801, 39.736102), 
+
+			/*new jsts.geom.Coordinate(-105.210492, 39.750589),
+			new jsts.geom.Coordinate(-105.222601, 39.751347),
+			new jsts.geom.Coordinate(-105.153801, 39.736102),
 			new jsts.geom.Coordinate(-105.223925, 39.742108)*/
 		];
-		
+
 		// 3. calculate the voronoi tesselation
 		var geometryFactory = new jsts.geom.GeometryFactory();
-		var jstsMultipoints = geometryFactory.createMultiPoint(jstsPoints);				
+		var jstsMultipoints = geometryFactory.createMultiPoint(jstsPoints);
 		var voronoiBuilder  = new jsts.triangulate.VoronoiDiagramBuilder();
 		voronoiBuilder.setSites(jstsMultipoints);
 		var voronoi         = voronoiBuilder.getDiagram(geometryFactory);
-		
+
 		// 4. create an openlayers map
 		map = new OpenLayers.Map('map', {projection: "EPSG:900913"});
-		
+
 		// 5. base layer is a google map
-		baseLayer = new OpenLayers.Layer.Google('Google Map Layer', {layers: 'basic'});	
-		
+		baseLayer = new OpenLayers.Layer.Google('Google Map Layer', {layers: 'basic'});
+
 		// 6. have a layer with the sites
 		sitesLayer = new OpenLayers.Layer.Vector('sites layer');
 		var features1 = new Array(jstsPoints.length);
@@ -1289,31 +1675,31 @@
 			point = new OpenLayers.Geometry.Point(jstsPoints[i].x, jstsPoints[i].y);
 			features1[i] = new OpenLayers.Feature.Vector(point.transform(epsg4326, epsg900913), null);
 		}
-		sitesLayer.addFeatures(features1);				
-		
+		sitesLayer.addFeatures(features1);
+
 		// 7. have another layer with the tiles
-		tilesLayer = new OpenLayers.Layer.Vector('tiles layer');		
+		tilesLayer = new OpenLayers.Layer.Vector('tiles layer');
 		var geometries = parser.write(voronoi).components;
 		var features2 = new Array(geometries.length);
 		for (var i in geometries) {
 			features2[i] = new OpenLayers.Feature.Vector(geometries[i].transform(epsg4326, epsg900913), null, {fillOpacity:0,strokeColor:'#00FF00'});
 		}
-		tilesLayer.addFeatures(features2);				
-		
+		tilesLayer.addFeatures(features2);
+
 		// 8. add the layers to the map
 		map.addLayers([baseLayer, sitesLayer, tilesLayer]);
-		
-		// 9. do the zoom 
+
+		// 9. do the zoom
 		map.zoomToExtent(tilesLayer.getDataExtent());
-		
-		
-		
+
+
+
 		var button = document.getElementById('exportButton');
         button.addEventListener('click', exportToCsv);
-        
+
         function exportToCsv() {
             var myCsv = "";
-            
+
 //    		myCsv += voronoi;
             // var pointIndex = 1;
             // var voronoiResult = voronoiBuilder.getDiagram(geomFact);
@@ -1331,7 +1717,7 @@
             var gs = parser.write(voronoi).components;
             var pointIndex = 1;
             for (var i in gs) {
-                var verts = gs[i].transform(epsg900913, epsg4326)/*.transform(epsg4326, epsg900913)*/.getVertices();
+                var verts = gs[i]/*.transform(epsg900913, epsg4326)/*.transform(epsg4326, epsg900913)*/.getVertices();
                 myCsv += pointIndex;
                 myCsv += " ";
                 myCsv += verts;
@@ -1365,12 +1751,12 @@
             //     index++;
             // }
             // myCsv += voronoi.getCoordinates();
-            
+
     		/*for (var pt in jstsPoints) {
     		    for (var i in g) {
         			f[i] = new OpenLayers.Feature.Vector(g[i].transform(epsg4326, epsg900913), null, {fillOpacity:0,strokeColor:'#00FF00'});
         			myCsv += f[i];
-        			
+
         			myCsv += pointIndex;
         		    myCsv += ", ";
         		    myCsv += pt.latitude;
@@ -1384,7 +1770,7 @@
             window.open('data:text/csv;charset=utf-8,' + escape(myCsv));
         }
 	}
-</script>	
+</script>
 
 <!-- BODY -->
 <body onload="init()">

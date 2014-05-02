@@ -15,13 +15,13 @@ Procedure
 
 0. (Optional) Run ```./clustering.py``` to cluster cell towers together
 
-1. Open ```Voronoi Cell Towers/tesselation2.html``` to calculate Voronoi Tesselation. ```tesselation2.html``` already includes the Ivory Coast cell tower dataset which can be updated/replaced using ```setup.sh```.
+1. Open ```Voronoi Cell Towers/tesselation2.html``` in an HTML5 web browser to calculate Voronoi Tesselation. ```tesselation2.html``` already includes the Ivory Coast cell tower dataset which can be updated/replaced using ```setup.sh```.
 
 2. Click "Export Geometries to CSV"
 
 3. Save the resultant data to a file (```polygons.dat``` for example, saved as WKT (Well Known Text))
 
-3. Run ```Voronoi Cell Towers/polygon_processor.rb [polygon-datafile]``` to convert the Voronoi datafile to a CSV which is saved at ```Voronoi Cell Towers/OUTPUT/parsed_polygons.csv```
+3. Run ```./Voronoi\ Cell\ Towers/polygon_processor.rb [polygon-datafile]``` to convert the Voronoi datafile to a CSV which is saved at ```Voronoi Cell Towers/OUTPUT/parsed_polygons.csv```
 
 4. Run ```./grid_converter.py input_file geometry_file output_file``` to convert the population grid-map to a CSV with longitude, latitude, population
 
