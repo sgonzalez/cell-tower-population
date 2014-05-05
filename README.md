@@ -25,4 +25,10 @@ Procedure
 
 4. Run ```./grid_converter.py input_file geometry_file output_file``` to convert the population grid-map to a CSV with longitude, latitude, population
 
-5. Run ```./population_estimator.py Voronoi\ Cell\ Towers/OUTPUT/parsed_polygons.csv gridconverter_output_file populations``` to actually estimate the population for each cell tower polygon, stored in a CSV file with tower_id, population
+5. Run ```./population_estimator.py Voronoi\ Cell\ Towers/OUTPUT/parsed_polygons.csv gridconverter_output_file populations``` to actually estimate the population for each cell tower polygon, stored in a CSV file with tower_id, population. This may take a while depending on the dataset.
+
+
+Validation
+----------
+
+So far, the system has been validated with the Abidjan dataset. The aggregate sum of the population estimates is very close to the actual population reported by census data, as should be expected.
