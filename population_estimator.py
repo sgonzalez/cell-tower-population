@@ -8,6 +8,7 @@
 import datetime, shapely, sys, math
 from datetime import datetime, date, time
 from shapely.geometry import Polygon, Point
+from collections import defaultdict
 from math import modf
 
 def help():
@@ -88,7 +89,7 @@ print('That was easy!')
 # Load populations into array                                                     #
 # ------------------------------------------------------------------------------- #
 print('Reading gridded populations')
-populationData = {}
+populationData = {} # map of x,y tuple to number
 for line in populations:
   line = line.strip()
   data = line.split(',')
@@ -100,7 +101,7 @@ print('Finished loading gridded populations')
 # Load polygons into array                                                        #
 # ------------------------------------------------------------------------------- #
 print('Reading polygons')
-voronoiPolygons = {}
+voronoiPolygons = {} # map of cell tower id to polygon
 for line in input:
   line = line.strip()
   data = line.split(',')
@@ -113,6 +114,24 @@ print('Finished reading polygons')
 # ------------------------------------------------------------------------------- #
 # Estimate populations                                                            #
 # ------------------------------------------------------------------------------- #
+print('Estimating...')
+estimatedPopulations = defaultdict(int) # map of cell tower id to number, defaultdict ensures values default to 0
+for coord in populationData:
+    for towerid in voronoiPolygons: # if we aren't deleting used items as we go along, this for loop should be the innermost one, for efficiency
+        popAtCoord = populationData[coord]
+        point = Point(coord[0], coord[1])
+        if point.within(voronoiPolygons[towerid]):
+            estimatedPopulations[towerid] += popAtCoord
+        #    del populationData[coord] # we can delete this popData entry since it will not appear again
+
+# ------------------------------------------------------------------------------- #
+# Writing the new file                                                            #
+# ------------------------------------------------------------------------------- #
+print('Writing the new file')
+for towerid in estimatedPopulations:
+    output.write(str.format('{0:.0f}', towerid) + ',' + str.format('{0:.2f}', estimatedPopulations[towerid]) + '\n')
+output.close()
+print('Finished!')
 
 '''
 # ------------------------------------------------------------------------------- #
