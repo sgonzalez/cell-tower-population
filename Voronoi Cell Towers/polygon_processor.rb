@@ -4,8 +4,6 @@
 ### Santiago Gonzalez ###
 #########################
 
-require 'net/http'
-
 def process_line line, poly_out_file, pops_out_file
   split_line = line.split(' ', 2)
   polygon_id = split_line[0]
@@ -20,7 +18,7 @@ def process_line line, poly_out_file, pops_out_file
     puts ""
     poly_out_file.write("#{polygon_id}, #{vertex[0]}, #{vertex[1]}\n")
   end
-  
+
   puts ""
 end
 

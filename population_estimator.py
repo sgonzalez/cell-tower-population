@@ -1,8 +1,8 @@
 # ------------------------------------------------------------------------------- #
 # population_estimator.py - Estimates populations using cell tower Voronoi polys  #
 # cell_id, population                                                             #
-# Author: Thyago Mota                                                             #
-# Date: 02/01/2014                                                                #
+# Author: Santiago Gonzalez                                                       #
+# Date: April 2014                                                                #
 # ------------------------------------------------------------------------------- #
 
 import datetime, shapely, sys, math
@@ -132,82 +132,6 @@ for towerid in estimatedPopulations:
     output.write(str.format('{0:.0f}', towerid) + ',' + str.format('{0:.2f}', estimatedPopulations[towerid]) + '\n')
 output.close()
 print('Finished!')
-
-'''
-# ------------------------------------------------------------------------------- #
-# Reading metadata                                                                #
-# ------------------------------------------------------------------------------- #
-print('Metadata:')
-for i in range(0, 6):
-  line = input.readline()
-  line = line.replace('\n', '')
-  line = " ".join(line.split()) # eliminates duplicate whitespaces
-  data = line.split(' ')
-  #print(data[1])
-  if i == 0:
-    nCols = int(data[1])
-  elif i == 1:
-    nRows = int(data[1])
-  elif i == 2:
-    xllCorner = float(data[1])
-  elif i == 3:
-    yllCorner = float(data[1])
-  elif i == 4:
-    cellSize = float(data[1])
-  else:
-    noDataValue = float(data[1])
-print('\tnCols: \t\t' + str(nCols))
-print('\tRows: \t\t' + str(nRows))
-print('\txllCorner: \t' + str(xllCorner))
-print('\tyllCorner: \t' + str(yllCorner))
-print('\tcellSize: \t' + str(cellSize))
-print('\tnoDataValue: \t' + str(noDataValue))
-print('Grid box:')
-print('\t(' + str(xllCorner) + ',' + str(yllCorner) + ')')
-print('\t(' + str(xllCorner + nCols * cellSize) + ',' + str(yllCorner) + ')')
-print('\t(' + str(xllCorner) + ',' + str(yllCorner + nRows * cellSize) + ')')
-print('\t(' + str(xllCorner + nCols * cellSize) + ',' + str(yllCorner + nRows * cellSize) + ')')
-
-# ------------------------------------------------------------------------------- #
-# Reading the grid                                                                #
-# ------------------------------------------------------------------------------- #
-grid = [ [ 0. for j in xrange(nCols) ] for i in xrange(nRows) ]
-i = 0
-totalUnbounded = 0
-for line in input:
-  line = line.replace('\n', '')
-  if line[0] == ' ':
-    line = line[1:]
-  data = line.split(' ')
-  for j in xrange(nCols):
-    value = float(data[j])
-    if value == ARCGIS_NO_DATA_VALUE or value == noDataValue or value < 0:
-      continue
-    grid[i][j] = value
-    totalUnbounded = totalUnbounded + value
-  i = i + 1
-input.close()
-print('Total unbounded: ' + str(totalUnbounded))
-
-# ------------------------------------------------------------------------------- #
-# Writing the new file                                                            #
-# ------------------------------------------------------------------------------- #
-print('Writing the new file')
-totalBounded = 0
-for i in xrange(nRows):
-  #print('Line ' + str(i+1) + ' of ' + str(nRows))
-  lat = yllCorner + (nRows - i) * cellSize + cellSize/2 # cellSize/2 to have values centered instead of top-left
-  for j in xrange(nCols):
-    if grid[i][j] == 0:
-      continue
-    lon = xllCorner + j * cellSize + cellSize/2 # cellSize/2 to have values centered instead of top-left
-    point = Point(lon, lat)
-    if point.within(poly):
-      totalBounded = totalBounded + grid[i][j]
-      output.write(str.format('{0:.5f}', lon) + ',' + str.format('{0:.5f}', lat) + ',' + str.format('{0:.2f}', grid[i][j]) + '\n')
-output.close()
-print('Total bounded: ' + str(totalBounded))
-'''
 
 # ------------------------------------------------------------------------------- #
 # Script ends                                                                     #
