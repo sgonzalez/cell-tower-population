@@ -32,3 +32,9 @@ Validation
 ----------
 
 So far, the system has been validated with the Abidjan dataset. The aggregate sum of the population estimates is very close to the actual population reported by census data, as should be expected.
+
+
+Example Commands
+----------------
+Abidjan estimation: ```% python population_estimator.py abidjan/abidjan_polygons.csv abidjan/abidjan_geometry.csv abidjan/abidjan_pop.csv abidjan/abidjan_estimates.csv```
+Ivory Coast estimation: ```% python population_estimator.py ivorycoast/ivorycoast_polygons.csv ivorycoast/ivorycoast_geometry.csv OUT.csv ivorycoast/ivorycoast_estimates.csv```
